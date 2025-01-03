@@ -3,10 +3,12 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\Message;
 
 class ChatApp extends Component
 {
     public int $userId;
+    public string $body = '';
 
     public function mount()
     {
@@ -21,7 +23,7 @@ class ChatApp extends Component
             ->get()
             ->sortBy('id');
 
-        return view('livewire.chat-app',compact('messages'));
+        return view('livewire.chat-app',compact('messages'))->layout('layouts.app');
     }
 
     public function sendMessage(): void
